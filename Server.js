@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require("express");
 var app = express();
 const bodyParser = require("body-parser");
@@ -24,7 +25,7 @@ app.get('/ios-api/testjson',function(req,res) {
 app.get('/ios-api/testdb'),function(req,res) {
   console.log('received call to testdb');
   db.getDataFromDb(function(err,results) {
-    if(err) { res.send(500,"Server error"); return; } 
+    if(err) { res.status(500).send("Server error"); return; } 
     res.json(results);
   });
 }
