@@ -6,7 +6,7 @@ app.get('/',function(req,res) {
 })
 
 app.get('/ios-api',function(req,res) {
-  res.send("hello from ios-api server");
+  res.send({"result": "ios-api base"});
 })
 
 app.get('/ios-api/testjson',function(req,res) {
