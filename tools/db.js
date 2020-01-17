@@ -60,16 +60,3 @@ exports.addMessage = function(params,callback) {
         })
     })
 };
-
-exports.getDataFromDb = function(callback) {
-    const queryString = "SELECT * from leaderboard where position >= 1 and position <= 5";
-
-    pool.getConnection(function(err, connection) {
-        if (err) {console.log(err); callback(true); return;}
-        connection.query(queryString, function(err, results) {
-            connection.release();
-            if(err) {console.log(err); callback(true); return;}
-            callback(false, results);
-        })
-    })
-};

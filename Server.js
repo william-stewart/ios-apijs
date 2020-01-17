@@ -54,15 +54,8 @@ app.get('/ios-api/testjson',function(req,res) {
   res.json({"test_response": "successful call to testjson"});
 })
 
-app.get('/ios-api/testdb',function(req,res) {
-  db.getDataFromDb(function(err,results) {
-    if(err) { res.status(500).send("Server error"); return; } 
-    res.json(results);
-  });
-})
-
 app.use('/ios-api/*',function(req, res){
-  res.send('Error 404: Not Found in ios-api');
+  res.send({"response": "bad request"});
 });
 
 app.listen(8082,function(){
