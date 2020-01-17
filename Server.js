@@ -13,9 +13,10 @@ app.get('/ios-api',function(req,res) {
 
 app.post('/ios-api/addmsg',function(req,res) {
   var params = {userID: req.body.userID,
+                boardName: req.body.boardName,
                 messageTitle: req.body.messageTitle,
                 message: req.body.message,
-                posted: Date.now()}
+                posted: new Date()}
   console.log(params);
   
   db.addMessage(params,function(err,results) {

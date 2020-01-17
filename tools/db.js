@@ -49,11 +49,11 @@ exports.getMessagesByBoard = function(params,callback) {
 };
 
 exports.addMessage = function(params,callback) {
-    const queryString = "INSERT into messageboard values (? , ? , ? , ?)";
+    const queryString = "INSERT into messageboard values (? , ?,  ? , ? , ?)";
 
     pool.getConnection(function(err, connection) {
         if (err) {console.log(err); callback(true); return;}
-        connection.query(queryString,[params.userID,params.messageTitle,params.message,params.posted], function(err, results) {
+        connection.query(queryString,[params.userID,params.boardName,params.messageTitle,params.message,params.posted], function(err, results) {
             connection.release();
             if(err) {console.log(err); callback(true); return;}
             callback(false, results);
